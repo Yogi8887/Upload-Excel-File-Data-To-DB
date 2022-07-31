@@ -53,6 +53,4 @@ public class UploadExcelFileApplication implements CommandLineRunner {
 			e.printStackTrace();
 		}
 	}
-
-
 }
