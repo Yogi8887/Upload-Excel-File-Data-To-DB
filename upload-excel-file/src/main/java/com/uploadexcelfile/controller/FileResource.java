@@ -31,7 +31,7 @@ public class FileResource {
         return ResponseEntity.ok(fileService.listAll());
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN_USER')")
     @RequestMapping(method = RequestMethod.DELETE, path = "/delete/{id}")
     public void delete(@PathVariable("id") int id) {
         fileService.delete(id);
