@@ -22,7 +22,7 @@ public class FileUploadResource {
     @Autowired
     private FileUploadService fileUploadService;
 
-   // @PreAuthorize("hasRole('ADMIN')")
+   @PreAuthorize("hasRole('ADMIN_USER')")
     @RequestMapping(method = RequestMethod.POST, path = "/upload", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<UserFiles> uploadFiles(@RequestPart("file") MultipartFile file) throws IOException {
         if (file != null) {
