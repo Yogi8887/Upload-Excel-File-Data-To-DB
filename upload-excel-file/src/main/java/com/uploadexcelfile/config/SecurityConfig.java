@@ -1,5 +1,6 @@
 package com.uploadexcelfile.config;
 
+import com.uploadexcelfile.entities.Role;
 import com.uploadexcelfile.security.CustomUserDetailService;
 import com.uploadexcelfile.security.JwtAuthenticationEntryPoint;
 import com.uploadexcelfile.security.JwtAuthenticationFilter;
@@ -41,14 +42,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     @Autowired
     private JwtAuthenticationFilter jwtAuthenticationFilter;
-
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
+                .antMatchers("/files/upload")
+                .hasRole("ADMIN_USER")
                 //.antMatchers("/api/v1/auth/login").permitAll()
                 .antMatchers(PUBLIC_URLS).permitAll()
                 .antMatchers(HttpMethod.GET).permitAll()
