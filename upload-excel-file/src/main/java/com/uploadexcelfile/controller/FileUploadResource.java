@@ -22,7 +22,7 @@ public class FileUploadResource {
     @Autowired
     private FileUploadService fileUploadService;
 
-   @PreAuthorize("hasRole('ADMIN_USER')")
+    @PreAuthorize("hasRole('ADMIN_USER')")
     @RequestMapping(method = RequestMethod.POST, path = "/upload", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<UserFiles> uploadFiles(@RequestPart("file") MultipartFile file) throws IOException {
         if (file != null) {
@@ -31,7 +31,7 @@ public class FileUploadResource {
         throw new FileUploadException(HttpStatus.NOT_FOUND.value(), "File not found.");
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/record/{id}")
+    @GetMapping("/record/{id}")
     public ResponseEntity<UserFilesDto> uploadFiles(@PathVariable("id") long id) {
         return ResponseEntity.ok(fileUploadService.listRecords(id));
     }

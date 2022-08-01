@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.Arrays;
 import java.util.List;
 
 @SpringBootApplication
@@ -43,7 +44,8 @@ public class UploadExcelFileApplication implements CommandLineRunner {
 			role1.setRoleId(AppConstants.NORMAL_USER);
 			role1.setName("NORMAL_USER");
 
-			List<Role> roles = List.of(role, role1);
+			List<Role> roles = Arrays.asList(role,role1);
+
 
 			List<Role> result = this.roleRepo.saveAll(roles);
 			result.forEach(r->{
